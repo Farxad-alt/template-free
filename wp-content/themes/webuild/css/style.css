@@ -51,6 +51,21 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+html,
+body {
+    height: 100%;
+}
+
+.site {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
 :where(dd[class]) {
     margin-left: 0;
 }
@@ -790,6 +805,7 @@ figure {
 
 
 /* footer */
+
 .social-links {
     padding-top: 120px !important;
 }

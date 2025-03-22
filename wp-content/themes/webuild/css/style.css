@@ -618,13 +618,59 @@ i {
 
 
 
-.pagination {
-    position: absolute;
+ul.page-numbers {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    justify-content: center !important;
+}
+
+ul.page-numbers li:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+ul.page-numbers li:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+a.page-numbers,
+span.current {
     z-index: 3;
-    top: 50%;
-    transform: translate(0, -50%);
+    color: #FD5D14;
+    border-color: #FD5D14;
+    position: relative;
+    display: block;
+    padding: .85rem 1.5rem;
+    font-size: 1.25rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    border: 1px solid #dee2e6;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+a.page-numbers:hover {
+    z-index: 2;
+    color: #ca4a10;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+span.current {
+    z-index: 3;
+    color: #fff;
+    background-color: #FD5D14;
+    border-color: #FD5D14;
 
 }
+
+
+.prev {
+    display: block;
+}
+
 
 .reviews-slider .swiper-button-next,
 .reviews-slider .swiper-button-prev {

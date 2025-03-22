@@ -554,12 +554,21 @@ function reviewsText()
     $reviews_title = implode(' ', $liderTitle);
     return $reviews_title;
 }
+function cat_description()
+{
+    $cat_id = 31;
+    $cat_description = category_description($cat_id);
+    $liderTitle = explode(" ", $cat_description);
+    $liderTitle[1] = "<span>$liderTitle[1]</span>";
+    $reviews_title = implode(' ', $liderTitle);
+    return $reviews_title;
+}
 
 function servicesText()
 {
     $services_text = get_the_title(418);
     $servicesTitle = explode(" ", $services_text);
-    $servicesTitle[2] = '<span>' . $servicesTitle[2] . '</span>';
+    $servicesTitle[2] = "<span>$servicesTitle[2]</span>";
     $services_title = implode(' ', $servicesTitle);
     return $services_title;
 }
@@ -567,7 +576,7 @@ function contaсtText()
 {
     $services_text = get_the_title(49);
     $servicesTitle = explode(" ", $services_text);
-    $servicesTitle[1] = '<span>' . $servicesTitle[1] . '</span>';
+    $servicesTitle[1] = "<span>$servicesTitle[1]</span>";
     $services_title = implode(' ', $servicesTitle);
     return $services_title;
 }

@@ -1,24 +1,18 @@
-<?php if (is_page('grid')) : ?>
+<?php
+
+get_header();
+?><?php
+	if (is_category('grid')) : ?>
+<main id="primary" class="main">
 	<div class="container-fluid py-6 px-5">
 		<div class="text-center mx-auto mb-5" style="max-width: 600px;">
 			<h2 class="display-5 text-uppercase mb-4 section-title">
-				<?= blogText(); ?>
+				<?= cat_description(); ?>
 			</h2>
 
 		</div>
 		<div class="row g-5">
-			<?php
-			global $post;
-
-			$query = new WP_Query([
-				'category_name' => 'poslednie-stati-iz-nashego-bloga',
-				'orderby'        => 'ASC',
-			]);
-			?>
-			<?php if ($query->have_posts()) : ?>
-				<?php while ($query->have_posts()) :
-					$query->the_post();
-				?>
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<div class="col-lg-4 col-md-6">
 						<div class="bg-light">
 							<?php echo wfmtest_post_thumb(get_the_ID(), 'large', 'blog-img') ?>
@@ -38,31 +32,34 @@
 						</div>
 					</div>
 				<?php endwhile; ?>
-
-				<?php wp_reset_postdata(); ?>
-
 				<div class="col-12">
 					<?php
-					echo paginate_links([
-						'base'    => user_trailingslashit(wp_normalize_path(get_permalink() . '/%#%/')),
-						'current' => max(1, get_query_var('page')),
-						'total'   => $query->max_num_pages,
-					]);
+					echo paginate_links(
+						[
+							'show_all'     => true,
+							'prev_next'    => true,
+							'prev_text' 	 => '«',
+							'next_text'    => '»',
+							'type'         => 'plain',
+							'add_args'     => False,
+							'type' => 'list',
+						]
+					);
 					?>
+
 				</div>
-
-
-
-			<?php else : ?>
-				<p><?php esc_html_e('Нет постов по вашим критериям.'); ?></p>
+			<?php
+			else: ?>
+				Записей нет.
 			<?php endif; ?>
 		</div>
 	</div>
-<?php else : ?>
+
+<?php else : (is_front_page()) ?>
 	<div class="container-fluid py-6 px-5">
 		<div class="text-center mx-auto mb-5" style="max-width: 600px;">
 			<h2 class="display-5 text-uppercase mb-4 section-title">
-				<?= blogText(); ?>
+				<?= cat_description(); ?>
 			</h2>
 
 		</div>
@@ -72,7 +69,7 @@
 
 			$myposts = get_posts([
 				'numberposts' => 3,
-				'category_name'    => 'poslednie-stati-iz-nashego-bloga',
+				'category_name'    => 'grid',
 
 			]);
 
@@ -115,4 +112,11 @@
 			?>
 		</div>
 	</div>
-<?php endif; ?>
+
+<?php endif;
+?>
+
+</main><!-- #main -->
+<?php
+
+get_footer();

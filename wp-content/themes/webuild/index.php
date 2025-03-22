@@ -121,7 +121,8 @@ function debag($data)
 
 
     <!-- Наши блоги Start -->
-    <?php get_template_part('template-parts/content', 'grid') ?>
+
+    <?php require get_template_directory() . '/category-grid.php'; ?>
 
 
     <!-- Наши блоги End -->

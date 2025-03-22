@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying archive pages
  *
@@ -10,20 +11,30 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="main">
 
-		   <!-- Services Start -->
-		   <div class="container-fluid bg-light py-6 px-5">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h1 class="display-5 text-uppercase mb-4">We Provide <span class="text-primary">The Best</span> Construction Services</h1>
+
+        <div class="container-fluid py-6 px-5">
+                <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                        <h2 class="display-5 text-uppercase mb-4 section-title">
+                                <?php the_archive_description(); ?>
+                        </h2>
+
+                </div>
+
+                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+                                <?php get_template_part('template-parts/content', get_post_format()) ?>
+                        <?php endwhile;
+                else: ?>
+                        Записей нет.
+                <?php endif; ?>
+
         </div>
-        <?php get_template_part('template-parts/content', get_post_format())?>
 
-</div>
-        <!-- Services End -->
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
-get_sidebar();
+
 get_footer();

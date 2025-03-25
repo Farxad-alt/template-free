@@ -88,8 +88,3 @@ const reviewsSwiper = new Swiper(".reviews-swiper", {
 
     // And if we need scrollbar
 });
-
-
-
-
-

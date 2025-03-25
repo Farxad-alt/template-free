@@ -849,6 +849,38 @@ figure {
     }
 }
 
+/* project */
+.nav-tabs {
+    width: max-content;
+    margin: auto;
+}
+
+
+.nav-tabs .nav-link {
+    background-color: #fff !important;
+    background: none;
+    border: 1px solid #fd6d2c !important;
+
+}
+
+.btn-check:checked+.btn-outline-primary:focus,
+.btn-check:active+.btn-outline-primary:focus,
+.btn-outline-primary:active:focus,
+.btn-outline-primary.active:focus,
+.btn-outline-primary.dropdown-toggle.show:focus {
+    box-shadow: none !important;
+}
+
+/* single */
+.wp-block-gallery.has-nested-images.aligncenter {
+    justify-content: center;
+    gap: 20px;
+}
+
+.wp-block-media-text {
+
+    gap: 20px;
+}
 
 /* footer */
 

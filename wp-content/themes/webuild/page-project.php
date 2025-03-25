@@ -14,7 +14,8 @@ get_header();
 	</div>
 	<!-- Page Header Start -->
 
-	<?php get_template_part('template-parts/content', 'project') ?>
+	<?php get_template_part('template-parts/content', 'project')
+	?>
 
 </main>
 <?php get_footer(); ?>

@@ -1,5 +1,4 @@
 <?php global $post_id; ?>
-
 <div class="container-fluid bg-light py-6 px-5">
 
 	<?php
@@ -47,88 +46,6 @@
 					</div>
 				</div>
 			</div>
-
-
-			<div class="row g-5 portfolio-container ">
-				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
-					<div class="position-relative portfolio-box">
-						<?php $image = get_field('tab_nizhnie_izobrazhenie_1', $post_id); ?>
-						<img class="img-fluid w-100" src="<?php echo $image['sizes']['large']; ?>" alt="">
-						<a class="portfolio-title shadow-sm" href="">
-							<p class="h4 text-uppercase"><?php echo the_field('zagolovok_nizhnego_izobrazhenie_1', $post_id); ?></p>
-							<span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-						</a>
-						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
-							<i class="bi bi-plus text-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
-					<div class="position-relative portfolio-box">
-						<?php $image = get_field('tab_nizhnie_izobrazhenie_2', $post_id); ?>
-						<img class="img-fluid w-100" src="<?php echo $image['sizes']['large']; ?>" alt="">
-						<a class="portfolio-title shadow-sm" href="">
-							<p class="h4 text-uppercase"><?php echo the_field('zagolovok_nizhnego_izobrazhenie_2', $post_id); ?></p>
-							<span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-						</a>
-						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
-							<i class="bi bi-plus text-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
-					<div class="position-relative portfolio-box">
-						<?php $image = get_field('tab_nizhnie_izobrazhenie_3', $post_id); ?>
-						<img class="img-fluid w-100" src="<?php echo $image['sizes']['large']; ?>" alt="">
-						<a class="portfolio-title shadow-sm" href="">
-							<p class="h4 text-uppercase"><?php echo the_field('zagolovok_nizhnego_izobrazhenie_3', $post_id); ?></p>
-							<span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-						</a>
-						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
-							<i class="bi bi-plus text-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
-					<div class="position-relative portfolio-box">
-						<?php $image = get_field('tab_nizhnie_izobrazhenie_4', $post_id); ?>
-						<img class="img-fluid w-100" src="<?php echo $image['sizes']['large']; ?>" alt="">
-						<a class="portfolio-title shadow-sm" href="">
-							<p class="h4 text-uppercase"><?php echo the_field('zagolovok_nizhnego_izobrazhenie_4', $post_id); ?></p>
-							<span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-						</a>
-						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
-							<i class="bi bi-plus text-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
-					<div class="position-relative portfolio-box">
-						<?php $image = get_field('tab_nizhnie_izobrazhenie_5', $post_id); ?>
-						<img class="img-fluid w-100" src="<?php echo $image['sizes']['large']; ?>" alt="">
-						<a class="portfolio-title shadow-sm" href="">
-							<p class="h4 text-uppercase"><?php echo the_field('zagolovok_nizhnego_izobrazhenie_5', $post_id); ?></p>
-							<span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-						</a>
-						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
-							<i class="bi bi-plus text-white"></i>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
-					<div class="position-relative portfolio-box">
-						<?php $image = get_field('tab_nizhnie_izobrazhenie_6', $post_id); ?>
-						<img class="img-fluid w-100" src="<?php echo $image['sizes']['large']; ?>" alt="">
-						<a class="portfolio-title shadow-sm" href="">
-							<p class="h4 text-uppercase"><?php echo the_field('zagolovok_nizhnego_izobrazhenie_6', $post_id); ?></p>
-							<span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-						</a>
-						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
-							<i class="bi bi-plus text-white"></i>
-						</a>
-					</div>
-				</div>
-			</div>
 	<?php
 		}
 	} else {
@@ -138,4 +55,97 @@
 	wp_reset_postdata(); // Сбрасываем $post
 
 	?>
+
+	<div class="row g-5 portfolio-container ">
+		<?php if (have_posts()) : query_posts(['posts_per_page' => -1, 'order' => 'ASC', 'cat' => 26]); ?>
+			<?php while (have_posts()) : the_post(); ?>
+				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item ">
+					<div class="position-relative portfolio-box">
+						<?php echo the_post_thumbnail('full', array('class' => 'img-fluid w-100 h-100 mb-4 mb-md-0')); ?>
+						<a class="portfolio-title shadow-sm" href="<?php the_permalink() ?>">
+							<p class="h4 text-uppercase"><?php the_title(); ?></p>
+							<span class="text-body d-flex align-items-center"><i class="fa fa-map-marker-alt text-primary me-2"></i>
+								<?php echo the_excerpt(); ?>
+							</span>
+						</a>
+						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
+							<i class="bi bi-plus text-white"></i>
+						</a>
+					</div>
+				</div>
+			<?php endwhile; ?>
+		<?php endif; ?>
+		<?php wp_reset_query(); ?>
+		<?php
+
+		$myposts = get_posts([
+			'numberposts' => -1,
+
+			'category'    => 40
+		]);
+
+		if ($myposts) {
+			foreach ($myposts as $post) {
+				setup_postdata($post);
+		?>
+				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+					<div class="position-relative portfolio-box">
+
+						<?php echo the_post_thumbnail('full', ['class' => 'img-fluid w-100 h-100 mb-4 mb-md-0']); ?>
+						<a class="portfolio-title shadow-sm" href="<?php the_permalink() ?>">
+							<p class="h4 text-uppercase"><?php the_title(); ?></p>
+							<span class="text-body d-flex align-items-center"><i class="fa fa-map-marker-alt text-primary me-2"></i>
+								<?php echo the_excerpt(); ?>
+							</span>
+						</a>
+						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
+							<i class="bi bi-plus text-white"></i>
+						</a>
+					</div>
+				</div>
+		<?php
+			}
+		} else {
+			// Постов не найдено
+		}
+
+		wp_reset_postdata(); // Сбрасываем $post
+		?>
+		<?php
+
+		$myposts = get_posts([
+			'numberposts' => -1,
+
+			'category'    => 39
+		]);
+
+		if ($myposts) {
+			foreach ($myposts as $post) {
+				setup_postdata($post);
+		?>
+				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
+					<div class="position-relative portfolio-box">
+
+						<?php echo the_post_thumbnail('full', array('class' => 'img-fluid w-100 h-100 mb-4 mb-md-0')); ?>
+						<a class="portfolio-title shadow-sm" href="<?php the_permalink() ?>">
+							<p class="h4 text-uppercase"><?php the_title(); ?></p>
+							<span class="text-body d-flex align-items-center"><i class="fa fa-map-marker-alt text-primary me-2"></i>
+								<?php echo the_excerpt(); ?>
+							</span>
+						</a>
+						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">
+							<i class="bi bi-plus text-white"></i>
+						</a>
+					</div>
+				</div>
+		<?php
+			}
+		} else {
+			// Постов не найдено
+		}
+
+		wp_reset_postdata(); // Сбрасываем $post
+		?>
+	</div>
+
 </div>

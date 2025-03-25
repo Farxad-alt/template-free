@@ -1,25 +1,18 @@
-<?php get_header() ?>
+<main id="main" class="main">
+    <div class="container-fluid  ">
 
-<div class="col-12">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h2 class="display-5 text-uppercase mb-4 section-title"><?php the_title() ?></h2>
+        </div>
+        <div class="row gx-0 align-items-center">
 
+            <div class="col-md-12">
+                <div class=" ">
+                    <?php the_content() ?>
 
-    <div class="service-item bg-white d-flex flex-column align-items-center text-center">
-
-        <?php echo webuild_post_thumb(get_the_ID(), 'full', 'card-full-thumb') ?>
-
-        <!-- <div class="service-icon bg-white">
-            <i class="fa fa-3x fa-building text-primary"></i>
-        </div> -->
-        <div class="px-4 pb-4">
-            <h4 class="text-uppercase mb-3"><?php the_title() ?></h4>
-            <p class=""><?php the_content() ?></p>
-
+                </div>
+            </div>
         </div>
 
     </div>
-
-    <?php the_tags() ?>
-    <?php the_category() ?>
-
-</div>
-<?php get_footer() ?>
+</main>

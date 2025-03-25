@@ -708,3 +708,17 @@ function add_new_menu_item($nav, $args)
 }
 // удаление тега p
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+// function add_custom_post_class($classes)
+// {
+//     if (is_single()) {
+//         $classes[] = 'single-post';
+//     }
+//     return $classes;
+// }
+// add_filter('post_class', 'add_custom_post_class');
+
+// подключаем функцию активации мета блока (my_extra_fields)
+
+// Remove_filter('the_content', 'wpautop');
+// Remove_filter('the_excerpt', 'wpautop');

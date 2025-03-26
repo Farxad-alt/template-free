@@ -19,7 +19,8 @@ get_header();
 							<div class="p-4">
 								<div class="d-flex justify-content-between mb-4">
 									<div class="d-flex align-items-center">
-										<?php the_content(); ?>
+										<?php the_content('');
+										?>
 									</div>
 									<div class="d-flex align-items-center">
 										<span class="ms-3"><i class="far fa-calendar-alt text-primary me-2"></i><?php echo get_the_date('d M, Y'); ?></span>
@@ -84,7 +85,7 @@ get_header();
 							<div class="p-4">
 								<div class="d-flex justify-content-between mb-4">
 									<div class="d-flex align-items-center">
-										<?php the_content(); ?>
+										<?php the_content(''); ?>
 									</div>
 									<div class="d-flex align-items-center">
 										<span class="ms-3"><i class="far fa-calendar-alt text-primary me-2"></i><?php echo get_the_date('d M, Y'); ?></span>

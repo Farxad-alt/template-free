@@ -216,6 +216,7 @@ add_action('wp_enqueue_scripts', 'webuild_scripts');
  */
 require get_template_directory() . '/inc/custom-header.php';
 
+
 /**
  * Custom template tags for this theme.
  */
@@ -720,5 +721,165 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 
 // подключаем функцию активации мета блока (my_extra_fields)
 
-// Remove_filter('the_content', 'wpautop');
-// Remove_filter('the_excerpt', 'wpautop');
+Remove_filter('the_content', 'wpautop');
+Remove_filter('the_excerpt', 'wpautop');
+
+add_image_size('spec_thumb', 50, 70, true);
+
+
+// function change_comment_fields_order($fields)
+// {
+//     // Сохраним поле комментария во временной переменной
+//     $comment_field = $fields['comment'];
+
+//     // Меняем местами
+//     $fields['comment'] = $fields['author']; // Поле автора становится полем комментария
+//     $fields['author'] = $comment_field; // Поле комментария становится полем автора
+
+//     return $fields;
+// }
+
+// add_filter('comment_form_default_fields', 'change_comment_fields_order');
+
+// function custom_comment_fields_order($fields)
+// {
+//     // Сохраняем ссылку на текущее поле комментария
+//     $comment_field = $fields['comment'];
+//     // Теперь удаляем поле комментариев
+//     unset($fields['comment']);
+//     // Сохраняем поле автора
+//     $name_field = $fields['author'];
+//     // Теперь меняем порядок
+//     $fields = array(
+//         'comment' => $comment_field,
+//         'author' => $name_field,
+//     );
+//     return $fields;
+// }
+
+// add_filter('comment_form_fields', 'custom_comment_fields_order');
+
+function custom_comment_fields_order($fields)
+{
+    // Проверяем, существует ли поле комментария
+    if (isset($fields['comment'])) {
+        // Сохраняем ссылку на текущее поле комментария
+        $comment_field = $fields['comment'];
+        // Теперь удаляем поле комментариев
+        unset($fields['comment']);
+    }
+
+    // Проверяем, существует ли поле автора
+    if (isset($fields['author'])) {
+        // Сохраняем поле автора
+        $name_field = $fields['author'];
+        // Удаляем поле автора, чтобы изменить порядок
+        unset($fields['author']);
+    }
+    // Проверяем, существует ли поле url
+    if (isset($fields['url'])) {
+        // Сохраняем поле автора
+        $url_field = $fields['url'];
+        // Удаляем поле автора, чтобы изменить порядок
+        unset($fields['url']);
+    }
+
+    // Меняем порядок, добавляя комментарий и затем автора
+    $fields = array(
+        'author' => isset($name_field) ? $name_field : '', // Добавляем поле автора, если оно существует
+        'url' => isset($url_field) ? $url_field : '', // Добавляем поле автора, если оно существует
+        'comment' => isset($comment_field) ? $comment_field : '', // Добавляем поле комментария, если оно существует
+    );
+
+    return $fields;
+}
+
+add_filter('comment_form_fields', 'custom_comment_fields_order');
+
+function custom_comment_form_fields($fields)
+{
+    // Объединение полей author и email в один ряд
+    $fields['author'] = '<p class="comment-form-author-email">' .
+        '<input id="author" name="author" placeholder="Ваше имя"  type="text" value="" size="40" />' .
+        '<input id="email" name="email" placeholder="Ваш email"  type="email" value="" size="40" />' .
+        '</p>';
+
+    // Удаляем оригинальные поля author и email
+    unset($fields['email']);
+
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'custom_comment_form_fields');
+
+function custom_comment_form_defaults($fields)
+{
+    // Удаляем label из поля для имени
+    if (isset($fields['author'])) {
+        $fields['author'] = str_replace('<label for="author">', '', $fields['author']);
+        $fields['author'] = str_replace('</label>', '', $fields['author']);
+        $fields['author'] = str_replace('value=', 'placeholder="Ваше имя" value=', $fields['author']);
+    }
+
+    // Удаляем label из поля для url
+    if (isset($fields['url'])) {
+
+        $fields['url'] = str_replace('value=', 'placeholder="Сайт" value=', $fields['url']);
+    }
+
+    // Удаляем label из поля для комментария
+    if (isset($fields['comment'])) {
+        $fields['comment'] = str_replace('<label for="comment">', '', $fields['comment']);
+        $fields['comment'] = str_replace('</label>', '', $fields['comment']);
+        $fields['comment'] = str_replace('value=', 'placeholder="Ваш комментарий" value=', $fields['comment']);
+    }
+
+    return $fields;
+}
+add_filter('comment_form_default_fields', 'custom_comment_form_defaults');
+
+function custom_comment_field($field)
+{
+    // Проверяем, не является ли $field null
+    if ($field === null) {
+        return $field; // Если null, возвращаем его без изменений
+    }
+
+    // Удаляем тег label
+    $field = preg_replace('#<label for="comment".*?</label>#', '', $field);
+
+    // Добавляем атрибут placeholder
+    $field = str_replace('textarea', 'textarea placeholder="Ваш комментарий"', $field);
+
+
+
+    return $field;
+}
+add_filter('comment_form_field_comment', 'custom_comment_field');
+function custom_url_field($field)
+{
+    // Проверяем, не является ли $field null
+    if ($field === null) {
+        return $field; // Если null, возвращаем его без изменений
+    }
+
+    // Удаляем тег label
+    $field = preg_replace('#<label for="url".*?</label>#', '', $field);
+
+    // Добавляем атрибут placeholder
+    $field = str_replace('url', ' placeholder="Ваш"', $field);
+
+    return $field;
+}
+add_filter('comment_form_field_url', 'custom_url_field');
+
+// function h_comment_form_field_cookies($cookies)
+// {
+//     $cookies = '
+//  <p class="comment-form-personal-information">
+//  Нажимая кнопку "Отправить", я даю согласие на 
+//  обработку персональных данных в соответствии 
+//  с политикой в области обработки и защиты
+//  персональных данных.
+//  </p>';
+//     return $cookies;
+// }

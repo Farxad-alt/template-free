@@ -6,7 +6,7 @@
         <div class="service-icon bg-white home-icon">
             <?php
 
-            $content_shortcoded = do_shortcode(get_the_content());
+            $content_shortcoded = do_shortcode(get_the_content(' '));
             echo $content_shortcoded;
             ?>
 

@@ -11,7 +11,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header class="entry-header pt-5 ">
 		<?php the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>'); ?>
 
 		<?php if ('post' === get_post_type()) : ?>
@@ -24,13 +24,13 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php webuild_post_thumbnail(); ?>
+	<?php the_post_thumbnail(); ?>
 
 	<div class="entry-summary">
-		<?php the_excerpt(); ?>
+		<?php the_content(); ?>
 	</div><!-- .entry-summary -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer pb-5">
 		<?php webuild_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

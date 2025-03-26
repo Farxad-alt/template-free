@@ -61,11 +61,11 @@
 			<?php while (have_posts()) : the_post(); ?>
 				<div class="col-xl-4 col-lg-6 col-md-6 portfolio-item ">
 					<div class="position-relative portfolio-box">
-						<?php echo the_post_thumbnail('full', array('class' => 'img-fluid w-100 h-100 mb-4 mb-md-0')); ?>
+						<?php the_post_thumbnail('full', array('class' => 'img-fluid w-100 h-100 mb-4 mb-md-0')); ?>
 						<a class="portfolio-title shadow-sm" href="<?php the_permalink() ?>">
 							<p class="h4 text-uppercase"><?php the_title(); ?></p>
 							<span class="text-body d-flex align-items-center"><i class="fa fa-map-marker-alt text-primary me-2"></i>
-								<?php echo the_excerpt(); ?>
+								<?php the_excerpt(); ?>
 							</span>
 						</a>
 						<a class="portfolio-btn" href="<?php echo $image['sizes']['large']; ?>" data-lightbox="portfolio">

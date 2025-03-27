@@ -2,13 +2,13 @@
 /*
  * Добавляем метабокс
  */
-add_action('add_meta_boxes', 'true_meta_boxes_u');
+// add_action('add_meta_boxes', 'true_meta_boxes_u');
 
-function true_meta_boxes_u()
-{
+// function true_meta_boxes_u()
+// {
 
-	add_meta_box('truediv', 'Настройки', 'true_print_box_u', 'post', 'normal', 'side');
-}
+// 	add_meta_box('truediv', 'Настройки', 'true_print_box_u', 'post', 'normal', 'side');
+// }
 
 // }
 

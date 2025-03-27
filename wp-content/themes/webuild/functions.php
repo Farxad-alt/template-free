@@ -865,12 +865,20 @@ function custom_url_field($field)
     // Удаляем тег label
     $field = preg_replace('#<label for="url".*?</label>#', '', $field);
 
-    // Добавляем атрибут placeholder
-    $field = str_replace('url', ' placeholder="Ваш"', $field);
-
     return $field;
 }
 add_filter('comment_form_field_url', 'custom_url_field');
+
+//убрать 'comment-form' из списка поддерживаемых тегов, переписав предыдущий блок кода
+add_theme_support('html5', array(
+    'search-form',
+    'comment-list',
+    'gallery',
+    'caption',
+));
+
+//добавить строчку, отменяющую add_theme_support(), если вы не знаете, где ее искать
+remove_theme_support('html5', 'comment-form');
 
 // function h_comment_form_field_cookies($cookies)
 // {

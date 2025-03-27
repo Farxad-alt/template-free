@@ -24,7 +24,7 @@
             </div>
             <!-- Blog Detail End -->
 
-            <?php //comment_form(); 
+            <?php //require get_template_directory() . '/comments.php';
             ?>
         </div>
 

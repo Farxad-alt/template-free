@@ -22,58 +22,48 @@ if (post_password_required()) {
 ?>
 
 <div id="comments" class="comments-area mt-6">
-
 	<?php
-	// You can start editing here -- including this comment!
-	if (have_comments()) :
-	?>
-		<h2 class="comments-title">
-			<?php
-			$webuild_comment_count = get_comments_number();
-			if ('1' === $webuild_comment_count) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__('One thought on &ldquo;%1$s&rdquo;', 'webuild'),
-					'<span>' . wp_kses_post(get_the_title()) . '</span>'
-				);
-			} else {
-				printf(
-					/* translators: 1: comment count number, 2: title. */
-					esc_html(_nx('%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $webuild_comment_count, 'comments title', 'webuild')),
-					number_format_i18n($webuild_comment_count), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-				);
+	add_filter('comment_form_fields', 'theme_slug_new_comment_fields');
+	if (!function_exists('theme_slug_new_comment_fields')) {
+		function theme_slug_new_comment_fields($fields)
+		{
+			$new_fields = array();
+			$new_order = array('author', 'email', 'url', 'comment'); // нужный порядок
+
+			foreach ($new_order as $key) {
+				$new_fields[$key] = $fields[$key];
+				unset($fields[$key]);
 			}
-			?>
-		</h2><!-- .comments-title -->
+			if ($fields)
+				foreach ($fields as $key => $val) {
+					$new_fields[$key] = $val;
+				}
+			return $new_fields;
+		}
+	}
 
-		<?php the_comments_navigation(); ?>
-
-		<ol class="comment-list">
-			<?php
-			wp_list_comments(
-				array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				)
-			);
-			?>
-		</ol><!-- .comment-list -->
-
-		<?php
-		the_comments_navigation();
-
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if (! comments_open()) :
-		?>
-			<p class="no-comments"><?php esc_html_e('Comments are closed.', 'webuild'); ?></p>
-	<?php
-		endif;
-
-	endif; // Check for have_comments().
-
-	comment_form();
-
+	$args = array(
+		// изменяем текст кнопки отправки 
+		'label_submit' => 'Submit',
+		// удаляем сообщение со списком разрешенных HTML-тегов из-под формы комментирования
+		'comment_notes_after' => '',
+		'comment_notes_before' => '',
+		//текст перед формой комментариев
+		'title_reply' => __('Leave a comment'),
+		//Меняем разметку полей author и email
+		'fields' => array(
+			'author' => '<div class="comment-author comment-block"><input id="author" name="author" type="text" value="" size="30" placeholder="Your name" /></div>',
+			'email' => '<div class="comment-email comment-block"><input id="email" name="email" type="email" value="" size="30" placeholder="Your email" /></div>',
+			'url' => '<div class="comment-url comment-block"><input id="url" name="url" type="url" value="" size="30" placeholder="Your url" /></div>'
+		),
+		//Меняем разметку поля комментария textarea
+		'comment_field' => '<div class="comment-form-comment"><textarea id="comment" name="comment" 
+        aria-required="true" placeholder="Your text"></textarea></div>',
+		//Меняем разметку кнопки submit
+		'submit_field' => '<div class="form-submit">%1$s %2$s</div>'
+	);
+	comment_form($args);
 	?>
 
 </div><!-- #comments -->

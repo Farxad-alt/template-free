@@ -1,36 +1,17 @@
-<?php
-
-/**
- * Template part for displaying results in search pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WEBUILD
- */
-
-?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header pt-5 ">
-		<?php the_title(sprintf('<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>'); ?>
+	<div class="container-fluid ">
+		<header class="entry-header pt-5 ">
+			<?php the_title(sprintf('<h2 class="entry-title "><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h2>'); ?>
 
-		<?php if ('post' === get_post_type()) : ?>
-			<div class="entry-meta">
-				<?php
-				webuild_posted_on();
-				webuild_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
 
-	<?php the_post_thumbnail(); ?>
+		</header><!-- .entry-header -->
 
-	<div class="entry-summary">
-		<?php the_content(); ?>
-	</div><!-- .entry-summary -->
+		<?php the_post_thumbnail(); ?>
 
-	<footer class="entry-footer pb-5">
-		<?php webuild_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+		<div class="entry-summary">
+			<?php the_content(); ?>
+		</div><!-- .entry-summary -->
+
+
+	</div>
 </article><!-- #post-<?php the_ID(); ?> -->

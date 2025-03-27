@@ -64,6 +64,9 @@
         loop: true,
     });
 
+    // magnific
+    $(".popup_c").magnificPopup();
+
 })(jQuery);
 
 const reviewsSwiper = new Swiper(".reviews-swiper", {

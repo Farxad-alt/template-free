@@ -180,6 +180,7 @@ function webuild_scripts()
     wp_enqueue_style('webuild-owlcarousel', get_template_directory_uri() . '/lib/owlcarousel/assets/owl.carousel.min.css');
     wp_enqueue_style('webuild-tempusdominus', get_template_directory_uri() . '/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css');
     wp_enqueue_style('webuild-lightbox', get_template_directory_uri() . "/lib/lightbox/css/lightbox.min.css", array(), _S_VERSION);
+    wp_enqueue_style('webuild-magnific', get_template_directory_uri() . "/lib/magnific/magnific-popup.css", array(), _S_VERSION);
 
     //Customized Bootstrap Stylesheet
     wp_enqueue_style('webuild-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
@@ -204,6 +205,7 @@ function webuild_scripts()
     wp_enqueue_script('webuild-bootstrap', get_template_directory_uri() . "/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js", array(), _S_VERSION, true);
     wp_enqueue_script('webuild-isotope', get_template_directory_uri() . "/lib/isotope/isotope.pkgd.min.js", array(), _S_VERSION, true);
     wp_enqueue_script('webuild-lightbox', get_template_directory_uri() . "/lib/lightbox/js/lightbox.min.js", array(), _S_VERSION, true);
+    wp_enqueue_script('webuild-magnific', get_template_directory_uri() . "/lib/magnific/jquery.magnific-popup.min.js", array(), _S_VERSION, true);
     wp_enqueue_script('webuild-swiper', get_template_directory_uri() . "/js/swiper-bundle.min.js", array(), _S_VERSION, true);
 
     wp_enqueue_script('webuild-popup', get_template_directory_uri() . "/js/popup.js", [], _S_VERSION, true);

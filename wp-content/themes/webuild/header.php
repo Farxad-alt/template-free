@@ -12,6 +12,12 @@
 
 
     <?php wp_body_open(); ?>
+    <div class="hidden">
+        <div id="hidden_form" class="popup__content col-lg-8 p-5">
+            <?php echo do_shortcode('[contact-form-7 id="45cbafe" title="Без названия"]'); ?>
+        </div>
+    </div>
+
     <div id="page" class="site">
         <!-- Topbar Start -->
         <div class="container-fluid px-5 d-none d-lg-block header-top">
@@ -71,7 +77,7 @@
                         ]
                     ); ?>
 
-                    <a href="#" class="nav-item nav-link bg-primary text-white px-5  d-none d-lg-block">Получить предложение <i class="bi bi-arrow-right"></i></a>
+                    <a href="#hidden_form" class="nav-item nav-link bg-primary text-white px-5  d-none d-lg-block popup_c">Получить предложение <i class="bi bi-arrow-right"></i></a>
 
                     <!-- <ul class="collapse nav navbar-nav nav-collapse " role="search" id="nav-collapse4">
                     <li><a href="#">Support</a></li>

@@ -46,7 +46,7 @@ function debag($data)
                     </div>
                     <div class="swiper-button-prev">
                     </div>
-                    <a href="#popup" class="btn btn-primary py-md-3 px-md-5 mt-2 slider-btn">Связаться с нами</a>
+                    <a href="#hidden_form" class="btn btn-primary py-md-3 px-md-5 mt-2 slider-btn popup_c">Связаться с нами</a>
 
 
                 </div>
@@ -129,18 +129,5 @@ function debag($data)
 
 
 
-    <div id="popup" class="popup ">
-        <div class="popup__body">
-            <div class="popup__content">
-                <div class="col-lg-8 bg-light">
-                    <div class=" text-center p-5">
-
-                        <?php echo do_shortcode('[contact-form-7 id="45cbafe" title="Без названия"]'); ?>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </main>
 <?php get_footer() ?>

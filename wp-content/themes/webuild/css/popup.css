@@ -6,227 +6,76 @@ html {
 	scrollbar-gutter: stable;
 }
 
-.popup {
-	position: fixed;
-	z-index: 3;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.8);
-	top: 0;
-	left: 0;
-	opacity: 0;
-	visibility: hidden;
-	overflow-y: auto;
-	overflow-x: hidden;
-	transition: all 0.8s ease 0s;
-}
-
-.popup.open {
-	opacity: 1;
-	visibility: visible;
-}
-
-.popup.open .popup__content {
-	transform: translate(0, 0);
-	opacity: 1;
-}
-
-.popup__body {
-	min-height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 30px 10px;
-}
-
-.popup__content {
-	position: relative;
-	z-index: 1000;
-	box-shadow: 10px 15px 150px 0px rgba(0, 0, 0, 0.2);
-	background: var(--color-background);
-	width: 1006px;
-	margin: 0 auto;
-	padding: 0 52px 50px;
-	transition: all 0.8s ease 0s;
-	opacity: 0;
-	transform: translate(0, -100%);
-}
-
-.alert__content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1000;
-	box-shadow: 10px 15px 150px 0px rgba(0, 0, 0, 0.2);
-	background: var(--color-background);
-	width: 500px;
-
-	padding: 50px;
-	transition: all 0.8s ease 0s;
-	/*opacity: 0;*/
-	/*transform: translate(0, -100%);*/
-}
-
-/* popup авторизация */
-
-.form-book label {
-	text-align: start;
-	font-size: 16px;
-	margin-bottom: 10px;
-}
-
-.popup-logo {
-	display: inline-block;
-	position: relative;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, 0%);
-	/* margin-inline: auto; */
-}
-
-.popup-logo a {
-	display: inline-block;
-}
-
-.popup-title {
-	margin: 45px 0 21px;
-	font-family: var(--second-family);
-	font-weight: 400;
-	font-size: 32px;
-	border-bottom: 1px solid var(--color-title);
-	padding-bottom: 19px;
-}
-
-.popup__close {
-	position: absolute;
-	top: 15px;
-	right: 25px;
-	padding: 0;
-	width: 15px;
-	height: 15px;
-	text-align: center;
-	text-decoration: none;
-	font-weight: bold;
-	line-height: 17px;
-	transition: all ease 0.8s;
-}
-
-.popup__close:before {
-	content: url(../../img/icons/close.svg);
-	position: absolute;
-}
-
-.popup__content h5 {
-	margin-bottom: 8px;
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 24px;
-}
-
-.form-book__input {
-	background: inherit;
-	padding: 15px;
-	border: 2px solid #d49e3c;
-	border-radius: 100px;
-	max-width: 906px;
-	min-height: 51px;
-	width: 100%;
-	margin: 10px 0 20px;
-}
-
-.content .form-book__input {
-	margin: 10px 0;
-}
-
-.form-btn {
-	margin-top: 13px;
-	border-radius: 100px;
-	width: 906px;
-	height: 51px;
-	background: var(--color-yellow);
-	color: inherit;
-	font-size: 32px;
-	font-size: calc(19px + 12 * (100vw / 1728));
-	line-height: 39px;
-	width: 100%;
-}
-
-.form-btn:hover {
-	border: 2px solid var(--color-title);
-}
-
-.registration-btns {
-	font-size: 20px;
-	line-height: 24px;
-	text-align: center;
-	align-items: center;
-	display: inline-grid;
-}
-
-.registration {
-	margin-top: 16px;
-	display: flex;
-	justify-content: space-between;
-}
-
-.registration a {
-	font-size: 16px;
-}
-
-.registration a:hover {
-	color: var(--color-yellow);
-}
-
-
-.tabs-registration ._active {
-	background: var(--color-yellow);
-	color: inherit;
-}
-
-.content {
+.hidden {
 	display: none;
 }
 
-.content._active {
+
+#hidden_form {
+	/* max-width: 320px; */
+	margin: 0 auto;
+	position: relative;
+	min-height: 330px;
+	background: rgba(255, 255, 255, 0.8);
+	padding-top: 40px;
+}
+
+
+#hidden_form button.mfp-close {
+	height: 53px;
+	width: 49px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding-bottom: 20px;
+}
+
+.btnAndConfid {
+	max-width: 265px;
+	margin: auto;
+	text-align: center;
+}
+
+#hidden_form .btnAndConfid {
 	display: block;
-	margin-top: 28px;
+	float: none;
+	width: 100%;
+	margin: auto;
+	max-width: 100%;
 }
 
-.content[data-content="show"] {
-	margin-top: 12px;
+/* #hidden_form input {
+	margin: auto;
+	display: block;
+	width: 80%;
+	float: none;
+	margin-top: 20px;
+	color: #222;
+	font-size: 16px;
+	border-color: #777;
+} */
+
+#hidden_form .btnAndConfid button {
+	margin: auto;
+	margin-top: 20px;
 }
 
-.content[data-content="promote"] {
-	margin-top: 12px;
+.btnAndConfid {
+	max-width: 265px;
+	margin: auto;
+	text-align: center;
 }
 
-.tabs-registration {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	gap: 20px;
+#hidden_form .btnAndConfid {
+	display: block;
+	float: none;
+	width: 100%;
+	margin: auto;
+	max-width: 100%;
 }
 
-.registration-btn {
-	cursor: help;
-	padding: 15px 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 2px solid var(--color-yellow);
-	border-radius: 100px;
-	z-index: 2;
-	white-space: nowrap;
-	font-size: 20px;
-	line-height: 24px;
-}
-
-.registration-btn:hover {
-	border: 2px solid var(--color-title);
-	color: var(--color-yellow);
-}
-
-.registration-btn:hover._active {
-	color: inherit;
+#hidden_form .btnAndConfid button {
+	margin: auto;
+	margin-top: 20px;
 }

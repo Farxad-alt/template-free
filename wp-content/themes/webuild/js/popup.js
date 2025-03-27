@@ -65,12 +65,12 @@ if (popupLinks.length > 0) {
 	}
 }
 
-const popupCloseIcon = document.querySelectorAll('.close-popup');
+const popupCloseIcon = document.querySelectorAll('.mfp-close');
 if (popupCloseIcon.length > 0) {
 	for (let index = 0; index < popupCloseIcon.length; index++) {
 		const el = popupCloseIcon[index];
 		el.addEventListener('click', function (e) {
-			popupClose(el.closest('.popup'));
+			popupClose(el.closest('.popup_c'));
 			e.preventDefault();
 		});
 	}
@@ -78,23 +78,23 @@ if (popupCloseIcon.length > 0) {
 
 function popupOpen(curentPopup) {
 	if (curentPopup && lock) {
-		const popupActive = document.querySelector('.popup.open');
+		const popupActive = document.querySelector('.popup_c.auto');
 		if (popupActive) {
 			popupClose(popupActive, false);
 		} else {
 			bodyLock();
 		}
-		curentPopup.classList.add('open');
+		curentPopup.classList.add('auto');
 		curentPopup.addEventListener("click", function (e) {
-			if (!e.target.closest('.popup__content, .media__content')) {
-				popupClose(e.target.closest('.popup'));
+			if (!e.target.closest('.popup__content')) {
+				popupClose(e.target.closest('.popup_c'));
 			}
 		});
 	}
 }
 function popupClose(popupActive, dolock = true) {
 	if (lock) {
-		popupActive.classList.remove('open');
+		popupActive.classList.remove('auto');
 		if (dolock) {
 			bodyLock();
 		}
@@ -121,13 +121,13 @@ function bodyLock() {
 // закрытие popup по кнопке Esc
 document.addEventListener('keydown', function (e) {
 	if (e.which === 27) {
-		const popupActive = document.querySelector('.popup.open');
+		const popupActive = document.querySelector('.popup_c.auto');
 		popupClose(popupActive);
 	}
 });
 
 $(document).ready(function () {
-	$('.popup').click(function (event) {
+	$('.popup_c').click(function (event) {
 		$('body').toggleClass('lock');
 	});
 });
